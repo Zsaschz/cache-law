@@ -1,0 +1,27 @@
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start:dev": "nodemon dist/src/index.js",
+    "build:dev": "tsc --watch --preserveWatchOutput",
+    "dc-build": "npm run generate-db && npm run migrate-db && npm run dev",
+    "generate-db": "npx prisma generate",
+    "introspect-db": "npx prisma introspect",
+    "migrate-db": "npx prisma migrate dev",
+    "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^3.14.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.16",
+    "prisma": "^3.14.0"
+  }
+}
